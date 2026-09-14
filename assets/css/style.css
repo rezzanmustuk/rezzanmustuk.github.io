@@ -531,3 +531,66 @@ main {
     padding-right: 24px;
   }
 }
+
+/* Homepage layout fix */
+
+main {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 40px 6%;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  align-items: start;
+  gap: 70px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0;
+  text-align: left;
+}
+
+.hero-text {
+  text-align: left;
+  padding-top: 25px;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.search-wrapper {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.profile-image {
+  width: 190px;
+  height: 190px;
+  object-fit: cover;
+}
+
+.social-links {
+  justify-content: flex-start;
+  margin-top: 18px;
+}
+
+@media (max-width: 700px) {
+  main {
+    padding: 30px 24px;
+  }
+
+  .hero-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .hero-text {
+    padding-top: 0;
+  }
+}
