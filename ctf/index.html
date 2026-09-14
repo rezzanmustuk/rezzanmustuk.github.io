@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CTF | Rezzan</title>
+  <title>TryHackMe | Rezzan</title>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Chewy&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&family=Rock+Salt&family=Space+Grotesk:wght@400;500;600;700&display=swap"
@@ -19,19 +19,15 @@
       --purple: #8f5cff;
       --lime: #caff3d;
       --blue: #65d9ff;
+      --muted: #c9c6d0;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      min-height: 100vh;
       background: var(--bg);
       color: var(--text);
       font-family: "Space Grotesk", sans-serif;
@@ -50,10 +46,10 @@
 
     header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 24px;
-      margin-bottom: 110px;
+      margin-bottom: 100px;
     }
 
     .logo {
@@ -68,24 +64,27 @@
       flex-wrap: wrap;
       gap: 24px;
       font-family: "Caveat", cursive;
-      font-size: 1.45rem;
-    }
-
-    nav a {
-      transition: color 0.2s ease;
+      font-size: 1.4rem;
     }
 
     nav a:hover {
       color: var(--lime);
     }
 
-    .intro {
-      margin-bottom: 70px;
+    .back-link {
+      display: inline-block;
+      margin-bottom: 35px;
+      color: var(--blue);
+      font-family: "Caveat", cursive;
+      font-size: 1.5rem;
+    }
+
+    .back-link:hover {
+      color: var(--lime);
     }
 
     .hello {
       display: inline-block;
-      margin-left: -12px;
       color: var(--lime);
       font-family: "Rock Salt", cursive;
       font-size: 2rem;
@@ -93,81 +92,77 @@
     }
 
     h1 {
-      margin: 15px 0 20px;
+      margin: 18px 0;
       font-family: "Permanent Marker", cursive;
-      font-size: clamp(3.5rem, 9vw, 7rem);
-      line-height: 0.95;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1;
     }
 
     h1 span {
       display: block;
     }
 
-    h1 .ctf-word {
+    h1 .pink {
       color: var(--pink);
     }
 
-    .subtitle {
-      max-width: 620px;
-      color: #c9c6d0;
-      font-size: 1.1rem;
-      line-height: 1.7;
+    .intro {
+      max-width: 680px;
+      margin-bottom: 65px;
     }
 
-    .platform-grid {
+    .intro p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .writeup-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
-    .platform-card {
+    .writeup-card {
       min-height: 230px;
-      padding: 28px;
+      padding: 26px;
+      background: #191b27;
       border: 2px solid var(--pink);
       border-radius: 22px;
-      background: #191b27;
       position: relative;
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
+      transition: transform 0.2s ease;
     }
 
-    .platform-card:nth-child(2) {
+    .writeup-card:nth-child(2) {
       border-color: var(--purple);
       transform: rotate(2deg);
     }
 
-    .platform-card:nth-child(3) {
+    .writeup-card:nth-child(3) {
       border-color: var(--lime);
       transform: rotate(-2deg);
     }
 
-    .platform-card:hover {
+    .writeup-card:hover {
       transform: translateY(-8px) rotate(0);
     }
 
-    .platform-number {
-      color: var(--blue);
-      font-family: "Caveat", cursive;
-      font-size: 1.4rem;
-    }
-
-    .platform-card h2 {
-      margin: 22px 0 12px;
+    .writeup-card h2 {
+      margin: 0 0 18px;
       font-family: "Chewy", cursive;
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-weight: 400;
     }
 
-    .platform-card p {
-      color: #c9c6d0;
+    .writeup-card p {
+      color: var(--muted);
       line-height: 1.6;
     }
 
-    .platform-card .arrow {
+    .arrow {
       position: absolute;
-      right: 25px;
-      bottom: 20px;
+      right: 24px;
+      bottom: 18px;
       color: var(--pink);
       font-size: 2rem;
     }
@@ -185,13 +180,13 @@
         margin-bottom: 70px;
       }
 
-      .platform-grid {
+      .writeup-grid {
         grid-template-columns: 1fr;
       }
 
-      .platform-card,
-      .platform-card:nth-child(2),
-      .platform-card:nth-child(3) {
+      .writeup-card,
+      .writeup-card:nth-child(2),
+      .writeup-card:nth-child(3) {
         transform: none;
       }
     }
@@ -202,58 +197,64 @@
   <div class="page">
 
     <header>
-      <a href="../index.html" class="logo">aliceinw</a>
+      <a href="../../index.html" class="logo">aliceinw</a>
 
       <nav>
-        <a href="../index.html">Home</a>
-        <a href="index.html">CTF</a>
-        <a href="../notes/index.html">Notes</a>
-        <a href="../archive/index.html">Archive</a>
-        <a href="../index.html#about">About</a>
+        <a href="../../index.html">Home</a>
+        <a href="../index.html">CTF</a>
+        <a href="../../notes/index.html">Notes</a>
+        <a href="../../archive/index.html">Archive</a>
+        <a href="../../index.html#about">About</a>
       </nav>
     </header>
 
     <main>
+      <a href="../index.html" class="back-link">← Back to CTF</a>
+
       <section class="intro">
-        <div class="hello">Let's hack</div>
+        <div class="hello">TryHackMe</div>
 
         <h1>
           <span>My</span>
-          <span class="ctf-word">CTF Files</span>
+          <span class="pink">Write-ups</span>
         </h1>
 
-        <p class="subtitle">
-          A collection of my CTF write-ups, walkthroughs, experiments,
-          and things I learned while breaking systems ethically.
+        <p>
+          Notes, solutions, and lessons learned from the TryHackMe rooms
+          I have completed.
         </p>
       </section>
 
-      <section class="platform-grid">
+      <section class="writeup-grid">
 
-        <a href="tryhackme/index.html" class="platform-card">
-          <div class="platform-number">01 / platform</div>
-          <h2>TryHackMe</h2>
+        <a href="#" class="writeup-card">
+          <h2>First Room</h2>
+
           <p>
-            Rooms, challenges, write-ups, and lessons learned.
+            Replace this card with the name of your first completed
+            TryHackMe room.
           </p>
+
           <div class="arrow">↗</div>
         </a>
 
-        <a href="#" class="platform-card">
-          <div class="platform-number">02 / platform</div>
-          <h2>Hack The Box</h2>
+        <a href="#" class="writeup-card">
+          <h2>Web Security</h2>
+
           <p>
-            Machines, techniques, and practical penetration testing notes.
+            Web application security, enumeration, and exploitation notes.
           </p>
+
           <div class="arrow">↗</div>
         </a>
 
-        <a href="#" class="platform-card">
-          <div class="platform-number">03 / platform</div>
-          <h2>Other CTFs</h2>
+        <a href="#" class="writeup-card">
+          <h2>Linux</h2>
+
           <p>
-            Other platforms, competitions, and interesting challenges.
+            Linux commands, privilege escalation, and practical findings.
           </p>
+
           <div class="arrow">↗</div>
         </a>
 
