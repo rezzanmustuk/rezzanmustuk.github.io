@@ -137,7 +137,7 @@
 }
 
 .hello::after {
-  content: "⤿";
+  content: "↯";
   position: absolute;
   left: 20%;
   top: 100%;
@@ -145,7 +145,7 @@
   font-family: "Space Grotesk", sans-serif;
   font-size: 3rem;
   font-weight: 400;
-  transform: rotate(25deg);
+  transform: rotate(45deg);
 }
 
 
@@ -575,6 +575,19 @@ h2::after {
         align-items: flex-start;
       }
     }
+    h1 {
+  text-align: center;
+}
+
+.im-word {
+  display: block;
+  font-size: 0.55em;
+  margin-bottom: -8px;
+}
+
+.name-word {
+  display: block;
+}
   </style>
 </head>
 
@@ -599,10 +612,10 @@ h2::after {
         <div class="hero-copy">
           <div class="hello">Hey,</div>
 
-          <h1>
-            I'm
-            <span>Rezzan</span>
-          </h1>
+        <h1>
+  <span class="im-word">I'm</span>
+  <span class="name-word">Rezzan</span>
+</h1>
 
           <p class="hero-title">
             Offensive Security Researcher
