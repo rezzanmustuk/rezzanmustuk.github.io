@@ -541,6 +541,102 @@ body {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
 }
+    /* El çizimi ve boya sıçraması detayları */
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.45;
+  background-repeat: no-repeat;
+}
+
+body::before {
+  width: 260px;
+  height: 220px;
+  top: 80px;
+  left: -80px;
+  background:
+    radial-gradient(circle at 30% 30%, var(--pink) 0 7px, transparent 8px),
+    radial-gradient(circle at 60% 55%, var(--orange) 0 12px, transparent 13px),
+    radial-gradient(circle at 35% 80%, var(--purple) 0 5px, transparent 6px),
+    radial-gradient(circle at 80% 20%, var(--lime) 0 4px, transparent 5px);
+  transform: rotate(-18deg);
+}
+
+body::after {
+  width: 300px;
+  height: 250px;
+  right: -100px;
+  top: 420px;
+  background:
+    radial-gradient(circle at 20% 30%, var(--blue) 0 8px, transparent 9px),
+    radial-gradient(circle at 65% 45%, var(--pink) 0 5px, transparent 6px),
+    radial-gradient(circle at 45% 80%, var(--lime) 0 11px, transparent 12px),
+    radial-gradient(circle at 85% 75%, var(--orange) 0 4px, transparent 5px);
+  transform: rotate(22deg);
+}
+
+.hero h1,
+.section-heading h2,
+.about h2 {
+  text-shadow:
+    3px 3px 0 rgba(255, 79, 195, 0.18),
+    -2px 2px 0 rgba(53, 201, 255, 0.12);
+}
+
+.work-card,
+.skill,
+.about {
+  position: relative;
+}
+
+.work-card::before,
+.skill::before {
+  content: "✳";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: var(--orange);
+  font-size: 1rem;
+  transform: rotate(15deg);
+}
+
+.work-card:nth-child(2)::before {
+  color: var(--lime);
+  content: "✦";
+}
+
+.work-card:nth-child(3)::before {
+  color: var(--blue);
+  content: "✳";
+}
+
+.work-card:nth-child(4)::before {
+  color: var(--pink);
+  content: "✦";
+}
+
+.button {
+  border-radius: 5px 14px 7px 12px;
+  transform: rotate(-1deg);
+}
+
+.button.secondary {
+  transform: rotate(1deg);
+}
+
+.about-art {
+  border-radius: 12px 28px 18px 35px;
+  transform: rotate(-2deg);
+}
   </style>
 </head>
 
