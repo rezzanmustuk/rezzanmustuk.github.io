@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>CTF | Rezzan</title>
+  <title>CTF | aliceinw</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Chewy&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&family=Rock+Salt&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Chewy&family=Crafty+Girls&family=Henny+Penny&family=Knewave&family=Permanent+Marker&family=Rock+Salt&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #11131c;
-      --text: #f5f1ed;
-      --pink: #ff3acb;
-      --purple: #8f5cff;
-      --lime: #caff3d;
-      --blue: #65d9ff;
-      --muted: #c9c6d0;
+      --black: #05080d;
+      --panel: #0b141c;
+      --white: #ffffff;
+      --muted: #a7b1bf;
+      --pink: #ff19c8;
+      --purple: #722cff;
+      --blue: #00bfff;
+      --lime: #d7ff21;
+      --orange: #ff5722;
+      --border: #263746;
     }
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
+      min-height: 100vh;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 10% 15%, rgba(114, 44, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 90% 80%, rgba(255, 25, 200, 0.09), transparent 28%),
+        var(--black);
       font-family: "Space Grotesk", sans-serif;
     }
 
@@ -39,154 +51,319 @@
     }
 
     .page {
-      width: min(1180px, 92%);
-      margin: 0 auto;
-      padding: 32px 0 70px;
+      width: min(1500px, 96%);
+      margin: auto;
     }
 
     header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 24px;
-      margin-bottom: 100px;
+      justify-content: space-between;
+      padding: 30px 0 20px;
+      gap: 30px;
     }
 
     .logo {
+      color: var(--white);
+      font-family: "Henny Penny", cursive;
+      font-size: 2.8rem;
+      line-height: 1;
+      transition: color 0.2s ease;
+    }
+
+    .logo:hover {
       color: var(--pink);
-      font-family: "Permanent Marker", cursive;
-      font-size: 1.5rem;
-      transform: rotate(-5deg);
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      font-family: "Caveat", cursive;
-      font-size: 1.4rem;
+      align-items: center;
+      gap: 42px;
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
-    nav a:hover {
-      color: var(--lime);
+    nav a {
+      position: relative;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--white);
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -9px;
+      height: 2px;
+      background: var(--pink);
+    }
+
+    nav .search {
+      color: var(--pink);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    main {
+      padding: 65px 0 90px;
     }
 
     .back-link {
       display: inline-block;
-      margin-bottom: 35px;
-      color: var(--blue);
-      font-family: "Caveat", cursive;
-      font-size: 1.5rem;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
     }
 
     .back-link:hover {
-      color: var(--lime);
+      color: var(--pink);
+    }
+
+    .heading {
+      position: relative;
+      margin-bottom: 70px;
     }
 
     .hello {
-      display: inline-block;
+      display: block;
+      margin-left: 42px;
+      margin-bottom: 12px;
       color: var(--lime);
-      font-family: "Rock Salt", cursive;
-      font-size: 2rem;
+      font-family: "Crafty Girls", cursive;
+      font-size: 2.8rem;
       transform: rotate(-8deg);
     }
 
     h1 {
-      margin: 18px 0 20px;
+      max-width: 850px;
+      color: var(--white);
       font-family: "Permanent Marker", cursive;
-      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-size: clamp(4rem, 9vw, 8.5rem);
+      font-weight: 400;
       line-height: 0.95;
+      letter-spacing: -2px;
     }
 
     h1 span {
-      display: block;
-    }
-
-    h1 .pink {
+      display: inline-block;
       color: var(--pink);
+      transform: rotate(-4deg);
     }
 
-    .intro {
-      max-width: 680px;
-      margin-bottom: 65px;
-    }
-
-    .intro p {
+    .heading-note {
+      max-width: 580px;
+      margin-top: 28px;
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .section-panel {
+      padding: 28px;
+      background: linear-gradient(135deg, #0c1720, #081018);
+      border: 1px solid var(--border);
+      border-radius: 22px;
     }
 
     .platform-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      gap: 24px;
     }
 
     .platform-card {
-      min-height: 260px;
-      padding: 32px;
-      background: #191b27;
-      border: 2px solid var(--pink);
-      border-radius: 24px;
       position: relative;
-      transition: transform 0.2s ease;
+      min-height: 260px;
+      padding: 30px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0c1720, #081018);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .platform-card:first-child {
+      border-color: var(--pink);
     }
 
     .platform-card:nth-child(2) {
       border-color: var(--purple);
-      transform: rotate(2deg);
     }
 
     .platform-card:hover {
-      transform: translateY(-8px) rotate(0);
+      transform: translateY(-6px);
+    }
+
+    .platform-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -70px;
+      bottom: -80px;
+      border-radius: 50%;
+      background: rgba(255, 25, 200, 0.08);
+      pointer-events: none;
+    }
+
+    .platform-card:nth-child(2)::before {
+      background: rgba(114, 44, 255, 0.1);
+    }
+
+    .card-label {
+      margin-bottom: 35px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .platform-card h2 {
-      margin: 0 0 18px;
-      font-family: "Chewy", cursive;
-      font-size: 2.8rem;
+      margin-bottom: 18px;
+      color: var(--white);
+      font-family: "Rock Salt", cursive;
+      font-size: clamp(1.4rem, 3vw, 2.1rem);
       font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .platform-card h2::after {
+      display: none;
     }
 
     .platform-card p {
-      max-width: 340px;
+      max-width: 420px;
       color: var(--muted);
+      font-size: 0.95rem;
       line-height: 1.7;
     }
 
-    .arrow {
+    .card-arrow {
       position: absolute;
       right: 28px;
-      bottom: 20px;
+      bottom: 22px;
       color: var(--pink);
-      font-size: 2.2rem;
+      font-size: 2rem;
+      transition: transform 0.2s ease;
     }
 
-    .platform-card:nth-child(2) .arrow {
+    .platform-card:nth-child(2) .card-arrow {
       color: var(--purple);
     }
 
-    footer {
-      margin-top: 100px;
-      color: #858393;
-      font-size: 0.9rem;
+    .platform-card:hover .card-arrow {
+      transform: translateX(7px);
     }
 
-    @media (max-width: 800px) {
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 35px 0 45px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      color: var(--white);
+      font-family: "Henny Penny", cursive;
+      font-size: 1.7rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .footer-links a {
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-family: "Caveat", cursive;
+      font-size: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
       header {
         align-items: flex-start;
         flex-direction: column;
-        margin-bottom: 70px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 22px;
+      }
+
+      main {
+        padding-top: 45px;
       }
 
       .platform-grid {
         grid-template-columns: 1fr;
       }
 
-      .platform-card,
-      .platform-card:nth-child(2) {
-        transform: none;
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        width: 90%;
+      }
+
+      .logo {
+        font-size: 2.3rem;
+      }
+
+      nav {
+        gap: 18px;
+        font-size: 0.85rem;
+      }
+
+      .hello {
+        margin-left: 15px;
+        font-size: 2.1rem;
+      }
+
+      h1 {
+        font-size: clamp(3.2rem, 15vw, 5rem);
+      }
+
+      .heading {
+        margin-bottom: 45px;
+      }
+
+      .section-panel,
+      .platform-card {
+        padding: 22px;
+      }
+
+      .platform-card {
+        min-height: 240px;
+      }
+
+      .platform-card h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -200,59 +377,73 @@
 
       <nav>
         <a href="../index.html">Home</a>
-        <a href="index.html">CTF</a>
+        <a href="index.html" class="active">CTF</a>
         <a href="../notes/index.html">Notes</a>
         <a href="../archive/index.html">Archive</a>
-        <a href="../index.html#about">About</a>
+        <a href="../about/index.html">About</a>
+        <a href="#" class="search">⌕</a>
       </nav>
     </header>
 
     <main>
       <a href="../index.html" class="back-link">← Back to Home</a>
 
-      <section class="intro">
-        <div class="hello">Let's hack</div>
+      <section class="heading">
+        <span class="hello">let's hack</span>
 
         <h1>
-          <span>My</span>
-          <span class="pink">CTF Files</span>
+          CTF<br>
+          <span>Write-ups</span>
         </h1>
 
-        <p>
-          A collection of my CTF write-ups, walkthroughs,
-          and lessons learned.
+        <p class="heading-note">
+          Notes, solutions and lessons from the machines I break
+          ethically along the way.
         </p>
       </section>
 
       <section class="platform-grid">
 
         <a href="tryhackme/index.html" class="platform-card">
+          <div class="card-label">Capture the Flag</div>
+
           <h2>TryHackMe</h2>
 
           <p>
-            Rooms, challenges, write-ups, and lessons learned
+            Room walkthroughs, practical techniques and lessons
             from my TryHackMe journey.
           </p>
 
-          <div class="arrow">↗</div>
+          <div class="card-arrow">→</div>
         </a>
 
         <a href="#" class="platform-card">
+          <div class="card-label">Capture the Flag</div>
+
           <h2>Others CTF</h2>
 
           <p>
-            Write-ups and notes from other CTF platforms
-            and security challenges.
+            Write-ups and notes from other CTF platforms,
+            competitions and challenges.
           </p>
 
-          <div class="arrow">↗</div>
+          <div class="card-arrow">→</div>
         </a>
 
       </section>
     </main>
 
     <footer>
-      impossibleismyspecialty
+      <div class="footer-logo">aliceinw</div>
+
+      <div class="footer-links">
+        <a href="https://github.com/rezzanmustuk" target="_blank">◉</a>
+        <a href="https://www.linkedin.com/in/rezzan-mustuk/" target="_blank">in</a>
+        <a href="https://tryhackme.com/p/aliceinnvw" target="_blank">☁</a>
+        <a href="mailto:yourmail@example.com">✉</a>
+      </div>
+
+      <p class="footer-note">impossibleismyspecialty</p>
     </footer>
 
   </div>
