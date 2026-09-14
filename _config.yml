@@ -1,0 +1,34 @@
+title: "alice0x"
+description: "CTF write-ups, technical notes, and security research"
+url: "https://rezzanmustuk.github.io"
+
+markdown: kramdown
+theme: null
+
+collections:
+  ctf:
+    output: true
+    permalink: /ctf/:path/
+
+  notes:
+    output: true
+    permalink: /notes/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+  - scope:
+      path: ""
+      type: "ctf"
+    values:
+      layout: "post"
+
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "post"
