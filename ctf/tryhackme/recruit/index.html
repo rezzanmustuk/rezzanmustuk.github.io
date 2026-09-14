@@ -306,25 +306,6 @@
       font-size: 1.25rem;
     }
 
-  
-
-    /* İlk görsel */
-.intro-panel {
-  background: transparent;
-  border: none;
-  padding: 0;
-  box-shadow: none;
-}
-
-.first-image {
-  display: block;
-  width: 25%;
-  max-width: 25%;
-  margin: 25px 0 0;
-  border: none;
-  border-radius: 0;
-}
-
 /* Yazıları daha okunaklı yap */
 .writeup p {
   color: #e3e8ef;
@@ -343,6 +324,9 @@
   color: #ffffff;
   font-size: 1.45rem;
   line-height: 1.4;
+}
+    .writeup h2 {
+  display: none;
 }
 
 /* Mobil görünüm */
@@ -419,10 +403,6 @@
     font-size: 1.4rem;
   }
 
-  .writeup > .section-panel:first-child .writeup-image {
-    width: 50%;
-    max-width: 50%;
-  }
 }
   </style>
 </head>
@@ -449,10 +429,7 @@
       <section class="heading">
         <span class="hello">let's hack</span>
 
-        <h1>
-          Recruit<br>
-          <span>Write-up</span>
-        </h1>
+        <h1>RECRUIT</h1>
 
         <p class="intro">
           Recruit has just launched its new recruitment portal, allowing HR
@@ -471,11 +448,6 @@
 
       <div class="writeup">
 
-       <section class="section-panel intro-panel">
-  <h2>Let's go</h2>
-
-  <img src="https://raw.githubusercontent.com/rezzanmustuk/THM-Writeup/main/Recruit/images/recruit.png" class="writeup-image first-image" alt="Recruit room">
-</section>
 
         <section class="section-panel">
           <h2>Nmap Enumeration</h2>
