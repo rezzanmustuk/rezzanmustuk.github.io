@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CTF | Rezzan</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Chewy&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&family=Rock+Salt&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #11131c;
+      --text: #f5f1ed;
+      --pink: #ff3acb;
+      --purple: #8f5cff;
+      --lime: #caff3d;
+      --blue: #65d9ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      padding: 32px 0 70px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 110px;
+    }
+
+    .logo {
+      color: var(--pink);
+      font-family: "Permanent Marker", cursive;
+      font-size: 1.5rem;
+      transform: rotate(-5deg);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-family: "Caveat", cursive;
+      font-size: 1.45rem;
+    }
+
+    nav a {
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--lime);
+    }
+
+    .intro {
+      margin-bottom: 70px;
+    }
+
+    .hello {
+      display: inline-block;
+      margin-left: -12px;
+      color: var(--lime);
+      font-family: "Rock Salt", cursive;
+      font-size: 2rem;
+      transform: rotate(-8deg);
+    }
+
+    h1 {
+      margin: 15px 0 20px;
+      font-family: "Permanent Marker", cursive;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      line-height: 0.95;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    h1 .ctf-word {
+      color: var(--pink);
+    }
+
+    .subtitle {
+      max-width: 620px;
+      color: #c9c6d0;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .platform-card {
+      min-height: 230px;
+      padding: 28px;
+      border: 2px solid var(--pink);
+      border-radius: 22px;
+      background: #191b27;
+      position: relative;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .platform-card:nth-child(2) {
+      border-color: var(--purple);
+      transform: rotate(2deg);
+    }
+
+    .platform-card:nth-child(3) {
+      border-color: var(--lime);
+      transform: rotate(-2deg);
+    }
+
+    .platform-card:hover {
+      transform: translateY(-8px) rotate(0);
+    }
+
+    .platform-number {
+      color: var(--blue);
+      font-family: "Caveat", cursive;
+      font-size: 1.4rem;
+    }
+
+    .platform-card h2 {
+      margin: 22px 0 12px;
+      font-family: "Chewy", cursive;
+      font-size: 2.3rem;
+      font-weight: 400;
+    }
+
+    .platform-card p {
+      color: #c9c6d0;
+      line-height: 1.6;
+    }
+
+    .platform-card .arrow {
+      position: absolute;
+      right: 25px;
+      bottom: 20px;
+      color: var(--pink);
+      font-size: 2rem;
+    }
+
+    footer {
+      margin-top: 100px;
+      color: #858393;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 70px;
+      }
+
+      .platform-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-card,
+      .platform-card:nth-child(2),
+      .platform-card:nth-child(3) {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <a href="../index.html" class="logo">aliceinw</a>
+
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="index.html">CTF</a>
+        <a href="../notes/index.html">Notes</a>
+        <a href="../archive/index.html">Archive</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="hello">Let's hack</div>
+
+        <h1>
+          <span>My</span>
+          <span class="ctf-word">CTF Files</span>
+        </h1>
+
+        <p class="subtitle">
+          A collection of my CTF write-ups, walkthroughs, experiments,
+          and things I learned while breaking systems ethically.
+        </p>
+      </section>
+
+      <section class="platform-grid">
+
+        <a href="tryhackme/index.html" class="platform-card">
+          <div class="platform-number">01 / platform</div>
+          <h2>TryHackMe</h2>
+          <p>
+            Rooms, challenges, write-ups, and lessons learned.
+          </p>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a href="#" class="platform-card">
+          <div class="platform-number">02 / platform</div>
+          <h2>Hack The Box</h2>
+          <p>
+            Machines, techniques, and practical penetration testing notes.
+          </p>
+          <div class="arrow">↗</div>
+        </a>
+
+        <a href="#" class="platform-card">
+          <div class="platform-number">03 / platform</div>
+          <h2>Other CTFs</h2>
+          <p>
+            Other platforms, competitions, and interesting challenges.
+          </p>
+          <div class="arrow">↗</div>
+        </a>
+
+      </section>
+    </main>
+
+    <footer>
+      impossibleismyspecialty
+    </footer>
+
+  </div>
+</body>
+</html>
