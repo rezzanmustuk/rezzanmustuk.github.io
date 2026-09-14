@@ -6,21 +6,50 @@
 
   <title>About | Rezzan</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Chewy&family=Caveat:wght@400;500;600;700&family=Henny+Penny&family=Permanent+Marker&family=Knewave&family=Rock+Salt&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --black: #05080d;
+      --panel: #0b141c;
+      --white: #ffffff;
+      --muted: #a7b1bf;
+      --pink: #ff19c8;
+      --purple: #722cff;
+      --blue: #00bfff;
+      --lime: #d7ff21;
+      --orange: #ff5722;
+      --border: #263746;
     }
 
-    html {
-      scroll-behavior: smooth;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      background: #0b0f14;
-      color: #d5dce5;
-      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(114, 44, 255, .18),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 85% 65%,
+          rgba(255, 25, 200, .10),
+          transparent 25%
+        ),
+        var(--black);
+      color: var(--white);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
     }
 
     a {
@@ -28,201 +57,328 @@
       text-decoration: none;
     }
 
-    .navbar {
-      width: 100%;
-      padding: 28px 7%;
+    .page {
+      width: min(1500px, 96%);
+      margin: auto;
+    }
+
+    header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #1d2631;
-      background: #0b0f14;
+      align-items: center;
+      padding: 28px 0;
+      position: relative;
+      z-index: 5;
     }
 
     .logo {
-      color: #ffffff;
-      font-size: 1.25rem;
+      color: white;
+      font-family: "Henny Penny", cursive;
+      font-size: 2.8rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      position: relative;
     }
 
-    .logo span {
-      color: #79d99b;
-    }
-
-    .nav-links {
+    nav {
       display: flex;
       align-items: center;
-      gap: 28px;
-      color: #aeb8c5;
-      font-size: 0.95rem;
+      gap: 42px;
+      font-size: 1rem;
     }
 
-    .nav-links a {
-      transition: color 0.2s ease;
+    nav a {
+      position: relative;
+      padding: 8px 0;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #79d99b;
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      height: 4px;
+      background: var(--lime);
+    }
+
+    .search {
+      font-size: 2rem;
+      line-height: 1;
     }
 
     .about-section {
-      max-width: 1100px;
-      min-height: 72vh;
-      margin: 0 auto;
-      padding: 90px 30px;
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: 44% 56%;
+      align-items: center;
+      gap: 0;
+      padding: 35px 25px 20px;
+    }
+
+    .about-art {
+      width: 100%;
+      min-width: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 75px;
+      position: relative;
     }
 
-    .about-image-wrapper {
-      flex: 0 0 330px;
+    .about-art::before {
+      content: "";
+      position: absolute;
+      inset: 8% 0 0 5%;
+      background:
+        radial-gradient(
+          circle at 20% 30%,
+          var(--blue) 0 12px,
+          transparent 13px
+        ),
+        radial-gradient(
+          circle at 65% 18%,
+          var(--pink) 0 18px,
+          transparent 19px
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          var(--orange) 0 14px,
+          transparent 15px
+        ),
+        linear-gradient(
+          135deg,
+          transparent 20%,
+          rgba(255, 25, 200, .25),
+          transparent 70%
+        );
+      opacity: .8;
+      transform: rotate(-8deg);
     }
 
     .about-image {
       width: 100%;
+      max-width: 470px;
       height: auto;
       display: block;
-      border-radius: 12px;
-      border: 1px solid #263241;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
     }
 
     .about-content {
-      max-width: 650px;
+      position: relative;
+      z-index: 2;
+      padding: 45px 35px 35px 0;
     }
 
     .about-label {
-      margin-bottom: 14px;
-      color: #79d99b;
-      font-size: 0.85rem;
-      font-weight: 600;
+      color: var(--lime);
+      font-size: .9rem;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
+      margin-bottom: 18px;
     }
 
     .about-content h1 {
-      margin: 0 0 28px;
-      color: #ffffff;
-      font-size: 2.8rem;
-      font-weight: 700;
+      font-family: "Permanent Marker", cursive;
+      font-size: clamp(3.5rem, 5vw, 6rem);
+      line-height: .95;
+      font-weight: 400;
+      margin-bottom: 35px;
+    }
+
+    .about-content h1 span {
+      color: var(--pink);
     }
 
     .about-content p {
-      margin: 0 0 22px;
-      color: #d5dce5;
-      font-size: 1.12rem;
+      color: var(--muted);
+      font-size: 1.15rem;
       line-height: 1.9;
+      max-width: 650px;
+      margin-bottom: 25px;
     }
 
     .about-content p:last-child {
       margin-bottom: 0;
     }
 
-    .footer {
-      padding: 25px 30px;
-      border-top: 1px solid #1d2631;
-      color: #718096;
-      text-align: center;
-      font-size: 0.85rem;
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 38px 0;
+      margin-top: 30px;
+      border-top: 1px solid var(--border);
     }
 
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 22px;
-        flex-direction: column;
-        gap: 18px;
-      }
+    .footer-logo {
+      font-family: "Henny Penny", cursive;
+      color: var(--white);
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
 
-      .nav-links {
+    .footer-links {
+      display: flex;
+      gap: 25px;
+      font-size: 1.5rem;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-family: monospace;
+    }
+
+    @media (max-width: 900px) {
+      nav {
         gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
       }
 
       .about-section {
+        grid-template-columns: 1fr;
         min-height: auto;
-        padding: 55px 22px;
-        flex-direction: column;
-        align-items: center;
-        gap: 38px;
+        padding-top: 60px;
+        padding-bottom: 60px;
       }
 
-      .about-image-wrapper {
-        width: 100%;
-        max-width: 280px;
-        flex: none;
+      .about-art {
+        margin-bottom: 35px;
       }
 
       .about-content {
-        width: 100%;
+        padding: 0 25px;
       }
 
       .about-content h1 {
-        font-size: 2.1rem;
-        margin-bottom: 22px;
+        font-size: 4rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+        font-size: .85rem;
+      }
+
+      .logo {
+        font-size: 2rem;
+      }
+
+      .about-section {
+        padding: 45px 10px;
+      }
+
+      .about-content {
+        padding: 0 15px;
+      }
+
+      .about-content h1 {
+        font-size: 3.2rem;
       }
 
       .about-content p {
         font-size: 1rem;
         line-height: 1.8;
       }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="page">
 
-  <header class="navbar">
-    <a href="../index.html" class="logo">
-      Rezzan<span>.</span>
-    </a>
+    <header>
+      <a href="../index.html" class="logo">aliceinw</a>
 
-    <nav class="nav-links">
-      <a href="../index.html">Home</a>
-      <a href="../ctf/index.html">CTF</a>
-      <a href="index.html" class="active">About</a>
-    </nav>
-  </header>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../ctf/index.html">CTF</a>
+        <a href="../notes/index.html">Notes</a>
+        <a href="../archive/index.html">Archive</a>
+        <a href="index.html" class="active">About</a>
+        <a href="#" class="search">⌕</a>
+      </nav>
+    </header>
 
-  <main>
-    <section class="about-section">
+    <main>
+      <section class="about-section">
 
-      <div class="about-image-wrapper">
-        <img
-          src="../assets/aboutme.png"
-          alt="Rezzan waving illustration"
-          class="about-image">
+        <div class="about-art">
+          <img
+            src="../assets/aboutme.png"
+            alt="Rezzan waving illustration"
+            class="about-image"
+          >
+        </div>
+
+        <div class="about-content">
+          <div class="about-label">About Me</div>
+
+          <h1>
+            Hi, I'm <span>Rezzan.</span>
+          </h1>
+
+          <p>
+            I'm Rezzan, an Offensive Security Researcher who enjoys learning,
+            breaking things ethically, and exploring how systems work.
+          </p>
+
+          <p>
+            This is where I share my CTF write-ups, technical notes, and more.
+          </p>
+
+          <p>
+            Beyond cybersecurity, artificial intelligence fascinates me.
+            I aim to build my career at the intersection of AI and cybersecurity,
+            exploring how these two fields can shape the future of security.
+          </p>
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-logo">aliceinw</div>
+
+      <div class="footer-links">
+        <a
+          href="https://github.com/rezzanmustuk"
+          target="_blank"
+          rel="noopener noreferrer"
+        >◉</a>
+
+        <a
+          href="https://www.linkedin.com/in/rezzan-mustuk/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >in</a>
+
+        <a
+          href="https://tryhackme.com/p/aliceinnvw"
+          target="_blank"
+          rel="noopener noreferrer"
+        >☁</a>
+
+        <a href="mailto:yourmail@example.com">✉</a>
       </div>
 
-      <div class="about-content">
-        <div class="about-label">About Me</div>
+      <p class="footer-note">impossibleismyspecialty</p>
+    </footer>
 
-        <h1>Hi, I'm Rezzan.</h1>
-
-        <p>
-          I'm Rezzan, an Offensive Security Researcher who enjoys learning,
-          breaking things ethically, and exploring how systems work.
-        </p>
-
-        <p>
-          This is where I share my CTF write-ups, technical notes, and more.
-        </p>
-
-        <p>
-          Beyond cybersecurity, artificial intelligence fascinates me.
-          I aim to build my career at the intersection of AI and cybersecurity,
-          exploring how these two fields can shape the future of security.
-        </p>
-      </div>
-
-    </section>
-  </main>
-
-  <footer class="footer">
-    © 2026 Rezzan. Built with curiosity and a little chaos.
-  </footer>
-
+  </div>
 </body>
 </html>
