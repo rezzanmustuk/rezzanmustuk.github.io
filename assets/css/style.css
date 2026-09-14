@@ -418,3 +418,88 @@ main {
     padding: 18px;
   }
 }
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 28px 0;
+  margin-bottom: 48px;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff2bb5;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-shadow:
+    0 0 6px rgba(255, 43, 181, 0.8),
+    0 0 18px rgba(255, 43, 181, 0.6);
+}
+
+.potion-icon {
+  color: #b56cff;
+  font-size: 1.8rem;
+  text-shadow:
+    0 0 6px rgba(181, 108, 255, 0.9),
+    0 0 16px rgba(181, 108, 255, 0.8),
+    0 0 28px rgba(181, 108, 255, 0.5);
+  animation: potion-glow 2s ease-in-out infinite alternate;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
+}
+
+.main-nav a {
+  color: #00f0ff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: #ff2bb5;
+  text-shadow:
+    0 0 6px rgba(255, 43, 181, 0.8),
+    0 0 14px rgba(255, 43, 181, 0.5);
+}
+
+@keyframes potion-glow {
+  from {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+
+  to {
+    transform: translateY(-2px);
+    filter: brightness(1.5);
+  }
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+}
