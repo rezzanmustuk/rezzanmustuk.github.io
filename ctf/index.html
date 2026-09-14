@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TryHackMe | Rezzan</title>
+  <title>CTF | Rezzan</title>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Chewy&family=Caveat:wght@400;500;600;700&family=Permanent+Marker&family=Rock+Salt&family=Space+Grotesk:wght@400;500;600;700&display=swap"
@@ -92,10 +92,10 @@
     }
 
     h1 {
-      margin: 18px 0;
+      margin: 18px 0 20px;
       font-family: "Permanent Marker", cursive;
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      line-height: 1;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      line-height: 0.95;
     }
 
     h1 span {
@@ -113,58 +113,58 @@
 
     .intro p {
       color: var(--muted);
-      line-height: 1.7;
       font-size: 1.05rem;
+      line-height: 1.7;
     }
 
-    .writeup-grid {
+    .platform-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
     }
 
-    .writeup-card {
-      min-height: 230px;
-      padding: 26px;
+    .platform-card {
+      min-height: 260px;
+      padding: 32px;
       background: #191b27;
       border: 2px solid var(--pink);
-      border-radius: 22px;
+      border-radius: 24px;
       position: relative;
       transition: transform 0.2s ease;
     }
 
-    .writeup-card:nth-child(2) {
+    .platform-card:nth-child(2) {
       border-color: var(--purple);
       transform: rotate(2deg);
     }
 
-    .writeup-card:nth-child(3) {
-      border-color: var(--lime);
-      transform: rotate(-2deg);
-    }
-
-    .writeup-card:hover {
+    .platform-card:hover {
       transform: translateY(-8px) rotate(0);
     }
 
-    .writeup-card h2 {
+    .platform-card h2 {
       margin: 0 0 18px;
       font-family: "Chewy", cursive;
-      font-size: 2.2rem;
+      font-size: 2.8rem;
       font-weight: 400;
     }
 
-    .writeup-card p {
+    .platform-card p {
+      max-width: 340px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .arrow {
       position: absolute;
-      right: 24px;
-      bottom: 18px;
+      right: 28px;
+      bottom: 20px;
       color: var(--pink);
-      font-size: 2rem;
+      font-size: 2.2rem;
+    }
+
+    .platform-card:nth-child(2) .arrow {
+      color: var(--purple);
     }
 
     footer {
@@ -180,13 +180,12 @@
         margin-bottom: 70px;
       }
 
-      .writeup-grid {
+      .platform-grid {
         grid-template-columns: 1fr;
       }
 
-      .writeup-card,
-      .writeup-card:nth-child(2),
-      .writeup-card:nth-child(3) {
+      .platform-card,
+      .platform-card:nth-child(2) {
         transform: none;
       }
     }
@@ -197,62 +196,53 @@
   <div class="page">
 
     <header>
-      <a href="../../index.html" class="logo">aliceinw</a>
+      <a href="../index.html" class="logo">aliceinw</a>
 
       <nav>
-        <a href="../../index.html">Home</a>
-        <a href="../index.html">CTF</a>
-        <a href="../../notes/index.html">Notes</a>
-        <a href="../../archive/index.html">Archive</a>
-        <a href="../../index.html#about">About</a>
+        <a href="../index.html">Home</a>
+        <a href="index.html">CTF</a>
+        <a href="../notes/index.html">Notes</a>
+        <a href="../archive/index.html">Archive</a>
+        <a href="../index.html#about">About</a>
       </nav>
     </header>
 
     <main>
-      <a href="../index.html" class="back-link">← Back to CTF</a>
+      <a href="../index.html" class="back-link">← Back to Home</a>
 
       <section class="intro">
-        <div class="hello">TryHackMe</div>
+        <div class="hello">Let's hack</div>
 
         <h1>
           <span>My</span>
-          <span class="pink">Write-ups</span>
+          <span class="pink">CTF Files</span>
         </h1>
 
         <p>
-          Notes, solutions, and lessons learned from the TryHackMe rooms
-          I have completed.
+          A collection of my CTF write-ups, walkthroughs,
+          and lessons learned.
         </p>
       </section>
 
-      <section class="writeup-grid">
+      <section class="platform-grid">
 
-        <a href="#" class="writeup-card">
-          <h2>First Room</h2>
+        <a href="tryhackme/index.html" class="platform-card">
+          <h2>TryHackMe</h2>
 
           <p>
-            Replace this card with the name of your first completed
-            TryHackMe room.
+            Rooms, challenges, write-ups, and lessons learned
+            from my TryHackMe journey.
           </p>
 
           <div class="arrow">↗</div>
         </a>
 
-        <a href="#" class="writeup-card">
-          <h2>Web Security</h2>
+        <a href="#" class="platform-card">
+          <h2>Others CTF</h2>
 
           <p>
-            Web application security, enumeration, and exploitation notes.
-          </p>
-
-          <div class="arrow">↗</div>
-        </a>
-
-        <a href="#" class="writeup-card">
-          <h2>Linux</h2>
-
-          <p>
-            Linux commands, privilege escalation, and practical findings.
+            Write-ups and notes from other CTF platforms
+            and security challenges.
           </p>
 
           <div class="arrow">↗</div>
