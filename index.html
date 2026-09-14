@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>aliceinw | Offensive Security Researcher</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --background: #090b13;
+      --panel: #111522;
+      --panel-light: #171c2c;
+      --text: #f7f4ff;
+      --muted: #aaaabd;
+      --pink: #ff4fc3;
+      --purple: #8d45ff;
+      --blue: #35c9ff;
+      --lime: #d8ff32;
+      --orange: #ff8a3d;
+      --border: #30364b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 10% 10%, #35105e 0, transparent 28%),
+        radial-gradient(circle at 90% 45%, #25123f 0, transparent 25%),
+        var(--background);
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-wrapper {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+    }
+
+    .logo {
+      color: var(--pink);
+      font-family: "Kalam", cursive;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: var(--lime);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .main-nav a {
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--lime);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      min-height: 590px;
+      padding: 45px 0 70px;
+    }
+
+    .hero-kicker {
+      color: var(--pink);
+      font-family: "Kalam", cursive;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-family: "Kalam", cursive;
+      font-size: clamp(4rem, 8vw, 7rem);
+      line-height: 0.95;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+      display: block;
+    }
+
+    .hero-title {
+      margin-top: 28px;
+      padding-left: 18px;
+      border-left: 5px solid var(--pink);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .hero-description {
+      max-width: 470px;
+      margin-top: 20px;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 15px 24px;
+      border: 1px solid var(--lime);
+      border-radius: 12px;
+      background: var(--lime);
+      color: #10130b;
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--purple);
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 8% 0 5% 8%;
+      border-radius: 48% 52% 45% 55%;
+      background:
+        linear-gradient(135deg, #7228d7, #ff3dbb 60%, #252bff);
+      opacity: 0.9;
+      transform: rotate(-5deg);
+    }
+
+    .portrait-placeholder {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 440px);
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      border: 2px solid var(--pink);
+      border-radius: 42% 58% 50% 50%;
+      background: #171827;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .portrait-placeholder strong {
+      color: var(--pink);
+      font-family: "Kalam", cursive;
+      font-size: 2rem;
+    }
+
+    .section {
+      padding: 34px 0 70px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      font-family: "Kalam", cursive;
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .section-heading h2 span {
+      color: var(--pink);
+    }
+
+    .view-all {
+      color: var(--lime);
+      font-size: 0.9rem;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .work-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--pink);
+    }
+
+    .work-image {
+      height: 145px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #321b65, #171e42);
+      color: var(--blue);
+      font-family: "Kalam", cursive;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .work-card:nth-child(2) .work-image {
+      background: linear-gradient(135deg, #092f34, #15251d);
+      color: var(--lime);
+    }
+
+    .work-card:nth-child(3) .work-image {
+      background: linear-gradient(135deg, #54205c, #201a45);
+      color: var(--pink);
+    }
+
+    .work-card:nth-child(4) .work-image {
+      background: linear-gradient(135deg, #173c55, #151b31);
+      color: var(--blue);
+    }
+
+    .work-content {
+      padding: 18px;
+    }
+
+    .work-content h3 {
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .work-content p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      padding: 20px 10px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel);
+      text-align: center;
+    }
+
+    .skill-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--pink);
+      border-radius: 12px;
+      color: var(--pink);
+      font-size: 1.5rem;
+    }
+
+    .skill:nth-child(2) .skill-icon {
+      border-color: var(--lime);
+      color: var(--lime);
+    }
+
+    .skill:nth-child(3) .skill-icon {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .skill:nth-child(4) .skill-icon {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .skill:nth-child(5) .skill-icon {
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .skill:nth-child(6) .skill-icon {
+      border-color: var(--lime);
+      color: var(--lime);
+    }
+
+    .skill p {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--panel);
+    }
+
+    .about-art {
+      min-height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--lime), #8bff3d);
+      color: #111522;
+      font-family: "Kalam", cursive;
+      font-size: 2.2rem;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .about h2 {
+      font-family: "Kalam", cursive;
+      font-size: 3rem;
+      margin-bottom: 18px;
+    }
+
+    .about h2 span {
+      color: var(--pink);
+    }
+
+    .about p {
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .about .button {
+      margin-top: 24px;
+    }
+
+    .site-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 34px 0 45px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .footer-logo {
+      color: var(--pink);
+      font-family: "Kalam", cursive;
+      font-size: 1.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      color: var(--lime);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        min-height: 390px;
+      }
+
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .skills {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-header {
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .main-nav {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-heading h2,
+      .about h2 {
+        font-size: 2.5rem;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-wrapper">
+
+    <header class="site-header">
+      <a href="index.html" class="logo">aliceinw<span>♡</span></a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="ctf.html">CTF</a>
+        <a href="notes.html">Notlar</a>
+        <a href="archive.html">Arşiv</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div class="hero-text">
+          <p class="hero-kicker">Hey,</p>
+
+          <h1>
+            I'm
+            <span>Rezzan</span>
+          </h1>
+
+          <p class="hero-title">
+            Offensive Security Researcher
+          </p>
+
+          <p class="hero-description">
+            Exploring web security, breaking things ethically,
+            and collecting everything I learn along the way.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              href="https://www.linkedin.com/in/rezzan-mustuk/"
+              class="button"
+              target="_blank"
+              rel="noopener"
+            >
+              LinkedIn →
+            </a>
+
+            <a href="#recent-work" class="button secondary">
+              View Projects ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="portrait-placeholder">
+            <div>
+              <strong>Portrait illustration</strong>
+              <p>
+                Your custom illustration will go here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="recent-work">
+        <div class="section-heading">
+          <h2>Recent <span>Work</span></h2>
+          <a href="archive.html" class="view-all">View All →</a>
+        </div>
+
+        <div class="work-grid">
+
+          <article class="work-card">
+            <div class="work-image">Web Security</div>
+            <div class="work-content">
+              <h3>TryHackMe — Web Application Security Fundamentals</h3>
+              <p>CTF Write-up · Sep 13, 2026</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-image">Nmap</div>
+            <div class="work-content">
+              <h3>Understanding Nmap Scans</h3>
+              <p>Technical Note · Sep 12, 2026</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-image">Linux</div>
+            <div class="work-content">
+              <h3>Linux Privilege Escalation Notes</h3>
+              <p>Technical Note · Sep 10, 2026</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-image">Active Directory</div>
+            <div class="work-content">
+              <h3>Active Directory Enumeration Guide</h3>
+              <p>Technical Note · Sep 08, 2026</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <h2><span>Skills</span></h2>
+        </div>
+
+        <div class="skills">
+          <div class="skill">
+            <div class="skill-icon">⌘</div>
+            <p>Web Security</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">›_</div>
+            <p>Linux</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">⌘</div>
+            <p>Networking</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">ϟ</div>
+            <p>Burp Suite</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">◎</div>
+            <p>Nmap</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">▦</div>
+            <p>Active Directory</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="about">
+          <div class="about-art">
+            Your friendly<br>
+            security researcher<br>
+            illustration
+          </div>
+
+          <div>
+            <h2>About <span>Me</span></h2>
+
+            <p>
+              I'm Rezzan, an Offensive Security Researcher who enjoys
+              learning, exploring how systems work, and sharing the
+              things I discover through CTF write-ups and technical notes.
+            </p>
+
+            <a href="about.html" class="button">
+              Know More About Me →
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-logo">aliceinw ♡</div>
+
+      <div class="footer-links">
+        <a href="https://github.com/rezzanmustuk" target="_blank" rel="noopener">
+          GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/in/rezzan-mustuk/" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+
+        <a href="https://tryhackme.com/p/aliceinnvw" target="_blank" rel="noopener">
+          TryHackMe
+        </a>
+      </div>
+
+      <p>impossibleismyspecialty</p>
+    </footer>
+
+  </div>
+</body>
+</html>
