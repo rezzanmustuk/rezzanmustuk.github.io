@@ -1,1 +1,94 @@
+<style>
+  .about-section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+  }
 
+  .about-image-wrapper {
+    flex: 0 0 330px;
+  }
+
+  .about-image {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid #263241;
+    filter: brightness(0.9);
+  }
+
+  .about-content {
+    max-width: 650px;
+  }
+
+  .about-content h1 {
+    margin-bottom: 28px;
+    color: #ffffff;
+    font-size: 2.6rem;
+    font-weight: 700;
+  }
+
+  .about-content p {
+    margin-bottom: 22px;
+    color: #d5dce5;
+    font-size: 1.12rem;
+    line-height: 1.9;
+  }
+
+  @media (max-width: 768px) {
+    .about-section {
+      margin: 45px auto;
+      padding: 0 22px;
+      flex-direction: column;
+      gap: 35px;
+      align-items: flex-start;
+    }
+
+    .about-image-wrapper {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .about-content h1 {
+      font-size: 2rem;
+      margin-bottom: 22px;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+  }
+</style>
+
+<section class="about-section">
+  <div class="about-image-wrapper">
+    <img
+      src="../assets/aboutme.png"
+      alt="Rezzan waving illustration"
+      class="about-image">
+  </div>
+
+  <div class="about-content">
+    <h1>About Me</h1>
+
+    <p>
+      I'm Rezzan, an Offensive Security Researcher who enjoys learning,
+      breaking things ethically, and exploring how systems work.
+    </p>
+
+    <p>
+      This is where I share my CTF write-ups, technical notes, and more.
+    </p>
+
+    <p>
+      Beyond cybersecurity, artificial intelligence fascinates me.
+      I aim to build my career at the intersection of AI and cybersecurity,
+      exploring how these two fields can shape the future of security.
+    </p>
+  </div>
+</section>
