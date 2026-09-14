@@ -46,10 +46,10 @@
       text-decoration: none;
     }
 
-    .page {
-      width: min(1180px, 94%);
-      margin: auto;
-    }
+   .page {
+  width: min(1500px, 96%);
+  margin: auto;
+}
 
     header {
       display: flex;
@@ -105,20 +105,21 @@
       line-height: 1;
     }
 
-    .hero {
-      min-height: 570px;
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      align-items: center;
-      gap: 20px;
-      position: relative;
-    }
+  .hero {
+  min-height: 690px;
+  display: grid;
+  grid-template-columns: 44% 56%;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  padding: 35px 25px 20px;
+}
 
     .hero-copy {
-      position: relative;
-      z-index: 2;
-      padding: 35px 0;
-    }
+  position: relative;
+  z-index: 2;
+  padding: 45px 0 35px 35px;
+}
 
     .hero-copy::before {
       content: "↘";
@@ -131,19 +132,19 @@
     }
 
     .hello {
-      font-family: "Caveat", cursive;
-      font-size: 3rem;
-      font-weight: 700;
-      margin-left: 5px;
-    }
+  font-family: "Caveat", cursive;
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin-left: 5px;
+}
 
     h1 {
-      font-family: "Permanent Marker", cursive;
-      font-size: clamp(4rem, 8vw, 7.5rem);
-      line-height: .9;
-      font-weight: 400;
-      margin-top: 15px;
-    }
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(5rem, 8vw, 9rem);
+  line-height: .88;
+  font-weight: 400;
+  margin-top: 15px;
+}
 
     h1 span {
       display: block;
@@ -177,13 +178,14 @@
       line-height: .7;
     }
 
-    .hero-art {
-      min-height: 550px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+   .hero-art {
+  min-height: 650px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(10px);
+}
 
     .hero-art::before {
       content: "";
@@ -199,21 +201,21 @@
     }
 
     .character {
-      width: 390px;
-      height: 470px;
-      border-radius: 48% 52% 10% 10%;
-      background:
-        radial-gradient(circle at 50% 25%, #f7a16f 0 80px, transparent 81px),
-        linear-gradient(135deg, #30202b, #111722 65%);
-      border: 2px solid #ff3acb;
-      position: relative;
-      z-index: 2;
-      box-shadow: 25px 15px 0 rgba(114, 44, 255, .5);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: hidden;
-    }
+  width: 470px;
+  height: 570px;
+  border-radius: 48% 52% 10% 10%;
+  background:
+    radial-gradient(circle at 50% 25%, #f7a16f 0 80px, transparent 81px),
+    linear-gradient(135deg, #30202b, #111722 65%);
+  border: 2px solid #ff3acb;
+  position: relative;
+  z-index: 2;
+  box-shadow: 28px 18px 0 rgba(114, 44, 255, .5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
 
     .character::before {
       content: "Your illustration";
