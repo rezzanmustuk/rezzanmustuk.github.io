@@ -120,18 +120,35 @@
   padding: 45px 0 35px 35px;
 }
 
-    .hero-copy::before {
-      content: "↘";
-      position: absolute;
-      top: 0;
-      left: 20px;
-      font-size: 3rem;
-      color: white;
-      transform: rotate(-20deg);
-    }
+    .hero-copy {
+  position: relative;
+  z-index: 2;
+  padding: 45px 0 35px 35px;
+}
+
+.hello {
+  position: relative;
+  display: inline-block;
+  font-family: "Rock Salt", cursive;
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.hello::after {
+  content: "⤿";
+  position: absolute;
+  left: 65%;
+  top: 70%;
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  transform: rotate(25deg);
+}
 
     .hello {
-  font-family: "Caveat", cursive;
+  font-family: "Rock Salt", cursive;
   font-size: 3.8rem;
   font-weight: 700;
   margin-left: 5px;
