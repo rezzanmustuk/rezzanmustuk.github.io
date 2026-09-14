@@ -208,24 +208,6 @@
   overflow: hidden;
 }
 
-    .character::before {
-      content: "Your illustration";
-      color: var(--pink);
-      font-family: "Caveat", cursive;
-      font-size: 2rem;
-      position: absolute;
-      top: 45%;
-      transform: rotate(-8deg);
-    }
-
-    .character::after {
-      content: "♡";
-      color: var(--lime);
-      font-size: 5rem;
-      position: absolute;
-      bottom: 35px;
-      right: 35px;
-    }
 
     .section {
       margin-top: 35px;
@@ -580,6 +562,20 @@ h2::after {
   transform: translateY(-25px)
   text-align: center;
 }
+  .hero-illustration {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+  .about-image {
+  width: 100%;
+  max-width: 470px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
   </style>
 </head>
 
@@ -619,7 +615,12 @@ h2::after {
         </div>
 
         <div class="hero-art">
-          <div class="character"></div>
+          <div class="character">
+             <img 
+    src="assets/profile.png" 
+    alt="Rezzan illustration" 
+    class="hero-illustration">
+</div>
         </div>
       </section>
 
@@ -726,10 +727,11 @@ h2::after {
       <section class="section">
         <div class="section-panel about">
           <div class="about-art">
-            Rezzan<br>
-            Offensive<br>
-            Security
-          </div>
+  <img 
+    src="assets/aboutme.png" 
+    alt="Rezzan waving illustration" 
+    class="about-image">
+</div>
 
           <div>
             <h2>About Me</h2>
