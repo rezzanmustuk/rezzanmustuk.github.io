@@ -4,32 +4,371 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TryHackMe | Rezzan</title>
+  <title>TryHackMe | aliceinw</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Chewy&family=Crafty+Girls&family=Henny+Penny&family=Knewave&family=Permanent+Marker&family=Rock+Salt&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    :root {
+      --black: #05080d;
+      --panel: #0b141c;
+      --white: #ffffff;
+      --muted: #a7b1bf;
+      --pink: #ff19c8;
+      --purple: #722cff;
+      --blue: #00bfff;
+      --lime: #d7ff21;
+      --orange: #ff5722;
+      --border: #263746;
+    }
+
+    * {
       margin: 0;
-      padding: 50px;
-      background: #11131c;
-      color: #f5f1ed;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 10% 15%, rgba(114, 44, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 90% 80%, rgba(255, 25, 200, 0.09), transparent 28%),
+        var(--black);
+      font-family: "Space Grotesk", sans-serif;
     }
 
     a {
-      color: #ff3acb;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 30px 0 20px;
+    }
+
+    .logo {
+      color: var(--white);
+      font-family: "Henny Penny", cursive;
+      font-size: 2.8rem;
+    }
+
+    .logo:hover {
+      color: var(--pink);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--white);
+    }
+
+    nav a.active {
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -9px;
+      height: 2px;
+      background: var(--pink);
+    }
+
+    nav .search {
+      color: var(--pink);
+      font-size: 1.8rem;
+    }
+
+    main {
+      padding: 65px 0 90px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: var(--pink);
+    }
+
+    .heading {
+      margin-bottom: 55px;
+    }
+
+    .hello {
+      display: block;
+      margin-left: 35px;
+      margin-bottom: 15px;
+      color: var(--lime);
+      font-family: "Crafty Girls", cursive;
+      font-size: 2.5rem;
+      transform: rotate(-8deg);
     }
 
     h1 {
-      color: #caff3d;
+      color: var(--white);
+      font-family: "Permanent Marker", cursive;
+      font-size: clamp(3.8rem, 9vw, 7rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      display: inline-block;
+      color: var(--pink);
+      transform: rotate(-4deg);
+    }
+
+    .intro {
+      max-width: 800px;
+      margin-top: 30px;
+      color: #d5dce5;
+      font-size: 1.08rem;
+      line-height: 1.9;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .room-card {
+      position: relative;
+      min-height: 245px;
+      padding: 30px;
+      background: linear-gradient(135deg, #0c1720, #081018);
+      border: 1px solid var(--pink);
+      border-radius: 22px;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .room-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--lime);
+    }
+
+    .room-label {
+      margin-bottom: 35px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .room-card h2 {
+      margin-bottom: 18px;
+      color: var(--white);
+      font-family: "Rock Salt", cursive;
+      font-size: 1.7rem;
+      font-weight: 400;
+    }
+
+    .room-card p {
+      max-width: 430px;
+      color: #d5dce5;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .room-arrow {
+      position: absolute;
+      right: 28px;
+      bottom: 22px;
+      color: var(--pink);
+      font-size: 2rem;
+      transition: transform 0.2s ease;
+    }
+
+    .room-card:hover .room-arrow {
+      transform: translateX(7px);
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 35px 0 45px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      color: var(--white);
+      font-family: "Henny Penny", cursive;
+      font-size: 1.7rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-family: "Caveat", cursive;
+      font-size: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 22px;
+      }
+
+      .room-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        width: 90%;
+      }
+
+      .logo {
+        font-size: 2.3rem;
+      }
+
+      nav {
+        gap: 18px;
+        font-size: 0.85rem;
+      }
+
+      .hello {
+        margin-left: 15px;
+        font-size: 2rem;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 14vw, 5rem);
+      }
+
+      .room-card {
+        padding: 22px;
+      }
+
+      .room-card h2 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <a href="../index.html">← Back to CTF</a>
+  <div class="page">
 
-  <h1>TryHackMe Write-ups</h1>
+    <header>
+      <a href="../../index.html" class="logo">aliceinw</a>
 
-  <p>My completed TryHackMe rooms and CTF write-ups will appear here.</p>
+      <nav>
+        <a href="../../index.html">Home</a>
+        <a href="../index.html" class="active">CTF</a>
+        <a href="../../notes/index.html">Notes</a>
+        <a href="../../archive/index.html">Archive</a>
+        <a href="../../about/index.html">About</a>
+        <a href="#" class="search">⌕</a>
+      </nav>
+    </header>
+
+    <main>
+      <a href="../index.html" class="back-link">← Back to CTF</a>
+
+      <section class="heading">
+        <span class="hello">let's hack</span>
+
+        <h1>
+          TryHackMe<br>
+          <span>Write-ups</span>
+        </h1>
+
+        <p class="intro">
+          Room walkthroughs, practical techniques and lessons
+          from my TryHackMe journey.
+        </p>
+      </section>
+
+      <section class="room-grid">
+
+        <a href="recruit/index.html" class="room-card">
+          <div class="room-label">Room Write-up</div>
+
+          <h2>Recruit</h2>
+
+          <p>
+            A recruitment portal assessment involving enumeration,
+            Local File Inclusion, SQL injection and privilege escalation.
+          </p>
+
+          <div class="room-arrow">→</div>
+        </a>
+
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-logo">aliceinw</div>
+
+      <div class="footer-links">
+        <a href="https://github.com/rezzanmustuk" target="_blank">◉</a>
+        <a href="https://www.linkedin.com/in/rezzan-mustuk/" target="_blank">in</a>
+        <a href="https://tryhackme.com/p/aliceinnvw" target="_blank">☁</a>
+        <a href="mailto:yourmail@example.com">✉</a>
+      </div>
+
+      <p class="footer-note">impossibleismyspecialty</p>
+    </footer>
+
+  </div>
 </body>
 </html>
