@@ -156,13 +156,13 @@
       transform: rotate(-4deg);
     }
 
-    .intro {
-      max-width: 850px;
-      margin-top: 30px;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.9;
-    }
+  .intro {
+  max-width: 850px;
+  margin-top: 30px;
+  color: #d5dce5;
+  font-size: 1.12rem;
+  line-height: 1.9;
+}
 
     .writeup {
       display: flex;
@@ -200,24 +200,26 @@
       transform: rotate(-2deg);
     }
 
-    p {
-      color: var(--muted);
-      line-height: 1.9;
-    }
+   p {
+  color: #d5dce5;
+  font-size: 1.08rem;
+  font-weight: 400;
+  line-height: 1.9;
+}
 
     .section-panel p + p {
       margin-top: 18px;
     }
 
-    .writeup-image {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      margin-top: 25px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-    }
+   .writeup-image {
+  display: block;
+  width: 92%;
+  max-width: 92%;
+  height: auto;
+  margin: 25px auto 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
 
     .caption {
       margin-top: 10px;
@@ -304,11 +306,18 @@
       font-size: 1.25rem;
     }
 
+        .writeup > .section-panel:first-child .writeup-image {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
     @media (max-width: 900px) {
       header {
         align-items: flex-start;
         flex-direction: column;
       }
+      
 
       nav {
         gap: 22px;
@@ -324,42 +333,42 @@
       }
     }
 
-    @media (max-width: 600px) {
-      .page {
-        width: 90%;
-      }
+  @media (max-width: 600px) {
+  .page {
+    width: 90%;
+  }
 
-      .logo {
-        font-size: 2.3rem;
-      }
+  .logo {
+    font-size: 2.3rem;
+  }
 
-      nav {
-        gap: 18px;
-        font-size: 0.85rem;
-      }
+  nav {
+    gap: 18px;
+    font-size: 0.85rem;
+  }
 
-      .hello {
-        margin-left: 15px;
-        font-size: 2rem;
-      }
+  .hello {
+    margin-left: 15px;
+    font-size: 2rem;
+  }
 
-      h1 {
-        font-size: clamp(3rem, 14vw, 5rem);
-      }
+  h1 {
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
 
-      .section-panel {
-        padding: 22px;
-      }
+  .room-card {
+    padding: 22px;
+  }
 
-      h2 {
-        font-size: 1.3rem;
-      }
+  .room-card h2 {
+    font-size: 1.4rem;
+  }
 
-      pre {
-        padding: 16px;
-        font-size: 0.8rem;
-      }
-    }
+  .writeup > .section-panel:first-child .writeup-image {
+    width: 50%;
+    max-width: 50%;
+  }
+}
   </style>
 </head>
 
