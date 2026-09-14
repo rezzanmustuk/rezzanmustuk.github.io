@@ -9,24 +9,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@400;700&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --background: #090b13;
-      --panel: #111522;
-      --panel-light: #171c2c;
-      --text: #f7f4ff;
-      --muted: #aaaabd;
-      --pink: #ff4fc3;
-      --purple: #8d45ff;
-      --blue: #35c9ff;
-      --lime: #d8ff32;
-      --orange: #ff8a3d;
-      --border: #30364b;
+      --black: #05080d;
+      --panel: #0b141c;
+      --white: #ffffff;
+      --muted: #a7b1bf;
+      --pink: #ff19c8;
+      --purple: #722cff;
+      --blue: #00bfff;
+      --lime: #d7ff21;
+      --orange: #ff5722;
+      --border: #263746;
     }
 
     * {
@@ -37,12 +33,12 @@
 
     body {
       background:
-        radial-gradient(circle at 10% 10%, #35105e 0, transparent 28%),
-        radial-gradient(circle at 90% 45%, #25123f 0, transparent 25%),
-        var(--background);
-      color: var(--text);
+        radial-gradient(circle at 15% 20%, rgba(114, 44, 255, .18), transparent 25%),
+        radial-gradient(circle at 85% 65%, rgba(255, 25, 200, .10), transparent 25%),
+        var(--black);
+      color: var(--white);
       font-family: "Space Grotesk", sans-serif;
-      line-height: 1.5;
+      overflow-x: hidden;
     }
 
     a {
@@ -50,122 +46,140 @@
       text-decoration: none;
     }
 
-    .site-wrapper {
-      width: min(1180px, 92%);
-      margin: 0 auto;
+    .page {
+      width: min(1180px, 94%);
+      margin: auto;
     }
 
-    .site-header {
+    header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 28px 0;
+      position: relative;
+      z-index: 5;
     }
 
     .logo {
-      color: var(--pink);
-      font-family: "Kalam", cursive;
-      font-size: 2rem;
+      color: white;
+      font-family: "Caveat", cursive;
+      font-size: 2.8rem;
       font-weight: 700;
+      position: relative;
     }
 
-    .logo span {
-      color: var(--lime);
+    .logo::after {
+      content: "♕";
+      color: var(--pink);
+      font-family: sans-serif;
+      font-size: 2.7rem;
+      margin-left: 12px;
+      position: relative;
+      top: 4px;
     }
 
-    .main-nav {
+    nav {
       display: flex;
-      gap: 34px;
       align-items: center;
+      gap: 42px;
+      font-size: 1rem;
     }
 
-    .main-nav a {
-      color: var(--text);
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
+    nav a {
+      position: relative;
+      padding: 8px 0;
     }
 
-    .main-nav a:hover,
-    .main-nav a.active {
-      color: var(--lime);
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      height: 4px;
+      background: var(--lime);
+    }
+
+    .search {
+      font-size: 2rem;
+      line-height: 1;
     }
 
     .hero {
+      min-height: 570px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: .9fr 1.1fr;
       align-items: center;
-      gap: 40px;
-      min-height: 590px;
-      padding: 45px 0 70px;
+      gap: 20px;
+      position: relative;
     }
 
-    .hero-kicker {
-      color: var(--pink);
-      font-family: "Kalam", cursive;
-      font-size: 1.4rem;
-      margin-bottom: 8px;
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      padding: 35px 0;
     }
 
-    .hero h1 {
-      font-family: "Kalam", cursive;
-      font-size: clamp(4rem, 8vw, 7rem);
-      line-height: 0.95;
+    .hero-copy::before {
+      content: "↘";
+      position: absolute;
+      top: 0;
+      left: 20px;
+      font-size: 3rem;
+      color: white;
+      transform: rotate(-20deg);
+    }
+
+    .hello {
+      font-family: "Caveat", cursive;
+      font-size: 3rem;
       font-weight: 700;
+      margin-left: 5px;
     }
 
-    .hero h1 span {
-      color: var(--pink);
+    h1 {
+      font-family: "Permanent Marker", cursive;
+      font-size: clamp(4rem, 8vw, 7.5rem);
+      line-height: .9;
+      font-weight: 400;
+      margin-top: 15px;
+    }
+
+    h1 span {
       display: block;
+      color: var(--pink);
+      transform: rotate(-3deg);
     }
 
     .hero-title {
-      margin-top: 28px;
+      border-left: 6px solid var(--pink);
       padding-left: 18px;
-      border-left: 5px solid var(--pink);
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    .hero-description {
-      max-width: 470px;
-      margin-top: 20px;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 32px;
+      margin-top: 42px;
+      font-size: 1.3rem;
+      letter-spacing: .2px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 14px;
-      padding: 15px 24px;
-      border: 1px solid var(--lime);
-      border-radius: 12px;
+      gap: 25px;
+      margin-top: 28px;
+      padding: 16px 25px;
+      border-radius: 40px;
       background: var(--lime);
-      color: #10130b;
+      color: #0b0e09;
       font-weight: 700;
-      transition: transform 0.2s ease;
+      font-size: 1rem;
     }
 
-    .button:hover {
-      transform: translateY(-3px);
-    }
-
-    .button.secondary {
-      background: transparent;
-      color: var(--text);
-      border-color: var(--purple);
+    .button span {
+      font-size: 1.8rem;
+      line-height: .7;
     }
 
     .hero-art {
+      min-height: 550px;
       position: relative;
-      min-height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -174,61 +188,90 @@
     .hero-art::before {
       content: "";
       position: absolute;
-      inset: 8% 0 5% 8%;
-      border-radius: 48% 52% 45% 55%;
+      inset: 8% 0 0 5%;
       background:
-        linear-gradient(135deg, #7228d7, #ff3dbb 60%, #252bff);
-      opacity: 0.9;
-      transform: rotate(-5deg);
+        radial-gradient(circle at 20% 30%, var(--blue) 0 12px, transparent 13px),
+        radial-gradient(circle at 65% 18%, var(--pink) 0 18px, transparent 19px),
+        radial-gradient(circle at 80% 70%, var(--orange) 0 14px, transparent 15px),
+        linear-gradient(135deg, transparent 20%, rgba(255, 25, 200, .25), transparent 70%);
+      opacity: .8;
+      transform: rotate(-8deg);
     }
 
-    .portrait-placeholder {
+    .character {
+      width: 390px;
+      height: 470px;
+      border-radius: 48% 52% 10% 10%;
+      background:
+        radial-gradient(circle at 50% 25%, #f7a16f 0 80px, transparent 81px),
+        linear-gradient(135deg, #30202b, #111722 65%);
+      border: 2px solid #ff3acb;
       position: relative;
-      z-index: 1;
-      width: min(100%, 440px);
-      aspect-ratio: 4 / 5;
+      z-index: 2;
+      box-shadow: 25px 15px 0 rgba(114, 44, 255, .5);
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      padding: 30px;
-      border: 2px solid var(--pink);
-      border-radius: 42% 58% 50% 50%;
-      background: #171827;
-      color: var(--muted);
-      text-align: center;
+      overflow: hidden;
     }
 
-    .portrait-placeholder strong {
+    .character::before {
+      content: "Your illustration";
       color: var(--pink);
-      font-family: "Kalam", cursive;
+      font-family: "Caveat", cursive;
       font-size: 2rem;
+      position: absolute;
+      top: 45%;
+      transform: rotate(-8deg);
+    }
+
+    .character::after {
+      content: "♡";
+      color: var(--lime);
+      font-size: 5rem;
+      position: absolute;
+      bottom: 35px;
+      right: 35px;
     }
 
     .section {
-      padding: 34px 0 70px;
+      margin-top: 35px;
+      margin-bottom: 35px;
+    }
+
+    .section-panel {
+      background: linear-gradient(135deg, #0c1720, #081018);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      position: relative;
     }
 
     .section-heading {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    .section-heading h2 {
-      font-family: "Kalam", cursive;
-      font-size: 3rem;
+    h2 {
+      font-family: "Caveat", cursive;
+      font-size: 3.5rem;
       line-height: 1;
+      font-weight: 700;
     }
 
-    .section-heading h2 span {
-      color: var(--pink);
+    h2::after {
+      content: "〰";
+      color: var(--purple);
+      font-family: sans-serif;
+      font-size: 3rem;
+      margin-left: 20px;
     }
 
     .view-all {
       color: var(--lime);
-      font-size: 0.9rem;
+      font-weight: 700;
     }
 
     .work-grid {
@@ -238,91 +281,106 @@
     }
 
     .work-card {
-      overflow: hidden;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--panel);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .work-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--pink);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0a121a;
     }
 
     .work-image {
-      height: 145px;
+      height: 125px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      background: linear-gradient(135deg, #321b65, #171e42);
-      color: var(--blue);
-      font-family: "Kalam", cursive;
-      font-size: 1.5rem;
+      padding: 15px;
+      font-family: "Permanent Marker", cursive;
+      font-size: 1.25rem;
       text-align: center;
+      color: white;
     }
 
-    .work-card:nth-child(2) .work-image {
-      background: linear-gradient(135deg, #092f34, #15251d);
-      color: var(--lime);
+    .web {
+      background:
+        linear-gradient(135deg, rgba(255, 25, 200, .5), transparent),
+        linear-gradient(135deg, #25105e, #082d4d);
     }
 
-    .work-card:nth-child(3) .work-image {
-      background: linear-gradient(135deg, #54205c, #201a45);
-      color: var(--pink);
+    .nmap {
+      background:
+        repeating-linear-gradient(0deg, #073326 0 2px, #09251e 2px 4px);
+      color: #00ff91;
+      font-family: monospace;
     }
 
-    .work-card:nth-child(4) .work-image {
-      background: linear-gradient(135deg, #173c55, #151b31);
-      color: var(--blue);
+    .linux {
+      background:
+        linear-gradient(135deg, rgba(114, 44, 255, .5), transparent),
+        #20122e;
+    }
+
+    .ad {
+      background:
+        linear-gradient(135deg, rgba(0, 191, 255, .4), transparent),
+        #10263b;
     }
 
     .work-content {
-      padding: 18px;
+      padding: 15px;
     }
 
     .work-content h3 {
       font-size: 1rem;
       line-height: 1.35;
+      min-height: 68px;
     }
 
-    .work-content p {
-      margin-top: 8px;
+    .date {
       color: var(--muted);
-      font-size: 0.85rem;
+      margin-top: 12px;
+      font-size: .9rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      background: #34113d;
+      color: #ff8ce7;
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: .75rem;
     }
 
     .skills {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 18px;
+      gap: 22px;
     }
 
     .skill {
-      padding: 20px 10px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--panel);
       text-align: center;
     }
 
     .skill-icon {
-      width: 58px;
-      height: 58px;
-      margin: 0 auto 12px;
+      width: 72px;
+      height: 65px;
+      margin: auto;
+      border: 3px solid var(--pink);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid var(--pink);
-      border-radius: 12px;
+      font-size: 2rem;
       color: var(--pink);
-      font-size: 1.5rem;
     }
 
     .skill:nth-child(2) .skill-icon {
-      border-color: var(--lime);
-      color: var(--lime);
+      border-color: #00ffb3;
+      color: #00ffb3;
     }
 
     .skill:nth-child(3) .skill-icon {
@@ -346,86 +404,79 @@
     }
 
     .skill p {
-      font-size: 0.9rem;
-      font-weight: 600;
+      margin-top: 12px;
+      font-size: .95rem;
     }
 
     .about {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 40px;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 35px;
       align-items: center;
-      padding: 34px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: var(--panel);
     }
 
     .about-art {
-      min-height: 270px;
+      min-height: 260px;
+      border-radius: 15px;
+      background:
+        radial-gradient(circle at 30% 35%, #f6a06f 0 60px, transparent 61px),
+        linear-gradient(135deg, var(--lime), #173f2c);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--lime), #8bff3d);
-      color: #111522;
-      font-family: "Kalam", cursive;
-      font-size: 2.2rem;
+      font-family: "Permanent Marker", cursive;
+      font-size: 2rem;
+      color: #07100b;
       text-align: center;
       padding: 30px;
     }
 
-    .about h2 {
-      font-family: "Kalam", cursive;
-      font-size: 3rem;
-      margin-bottom: 18px;
-    }
-
-    .about h2 span {
-      color: var(--pink);
-    }
-
     .about p {
       color: var(--muted);
-      max-width: 520px;
+      line-height: 1.8;
+      max-width: 500px;
+      margin-top: 20px;
     }
 
-    .about .button {
-      margin-top: 24px;
-    }
-
-    .site-footer {
+    footer {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      padding: 34px 0 45px;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 38px 0;
+      margin-top: 30px;
       border-top: 1px solid var(--border);
-      color: var(--muted);
     }
 
     .footer-logo {
+      font-family: "Caveat", cursive;
       color: var(--pink);
-      font-family: "Kalam", cursive;
-      font-size: 1.8rem;
+      font-size: 2.5rem;
+      font-weight: 700;
     }
 
     .footer-links {
       display: flex;
-      gap: 20px;
+      gap: 25px;
+      font-size: 1.5rem;
     }
 
-    .footer-links a:hover {
-      color: var(--lime);
+    .footer-note {
+      color: var(--muted);
+      font-family: monospace;
     }
 
     @media (max-width: 900px) {
+      nav {
+        gap: 18px;
+      }
+
       .hero {
         grid-template-columns: 1fr;
       }
 
       .hero-art {
-        min-height: 390px;
+        min-height: 420px;
       }
 
       .work-grid {
@@ -442,18 +493,27 @@
     }
 
     @media (max-width: 600px) {
-      .site-header {
+      header {
         align-items: flex-start;
         gap: 20px;
       }
 
-      .main-nav {
-        gap: 14px;
+      nav {
         flex-wrap: wrap;
         justify-content: flex-end;
+        gap: 12px;
+        font-size: .85rem;
       }
 
-      .hero h1 {
+      .logo {
+        font-size: 2rem;
+      }
+
+      .hero-copy {
+        padding-top: 20px;
+      }
+
+      h1 {
         font-size: 4.5rem;
       }
 
@@ -465,201 +525,38 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .section-heading h2,
-      .about h2 {
-        font-size: 2.5rem;
+      .section-panel {
+        padding: 20px;
       }
 
-      .site-footer {
+      footer {
         flex-direction: column;
         align-items: flex-start;
       }
     }
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@400;700&family=Patrick+Hand&family=Permanent+Marker&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-body {
-  font-family: "Space Grotesk", sans-serif;
-}
-
-.logo,
-.site-logo {
-  font-family: "Permanent Marker", cursive !important;
-  font-weight: 400;
-  letter-spacing: -1px;
-}
-
-.hero h1 {
-  font-family: "Permanent Marker", cursive !important;
-  font-weight: 400;
-  line-height: 0.95;
-}
-
-.hero-kicker {
-  font-family: "Caveat", cursive !important;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.hero-title {
-  font-family: "Patrick Hand", cursive !important;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-.section-heading h2,
-.about h2 {
-  font-family: "Caveat", cursive !important;
-  font-size: 3.5rem;
-  font-weight: 700;
-}
-
-.work-image {
-  font-family: "Permanent Marker", cursive !important;
-}
-
-.work-content h3 {
-  font-family: "Patrick Hand", cursive !important;
-  font-size: 1.4rem;
-  font-weight: 400;
-}
-
-.button {
-  font-family: "Patrick Hand", cursive !important;
-  font-size: 1.25rem;
-  font-weight: 400;
-}
-
-.about-art {
-  font-family: "Permanent Marker", cursive !important;
-}
-
-.footer-logo {
-  font-family: "Permanent Marker", cursive !important;
-}
-
-.main-nav a {
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 600;
-}
-    /* El çizimi ve boya sıçraması detayları */
-
-body {
-  position: relative;
-  overflow-x: hidden;
-}
-
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.45;
-  background-repeat: no-repeat;
-}
-
-body::before {
-  width: 260px;
-  height: 220px;
-  top: 80px;
-  left: -80px;
-  background:
-    radial-gradient(circle at 30% 30%, var(--pink) 0 7px, transparent 8px),
-    radial-gradient(circle at 60% 55%, var(--orange) 0 12px, transparent 13px),
-    radial-gradient(circle at 35% 80%, var(--purple) 0 5px, transparent 6px),
-    radial-gradient(circle at 80% 20%, var(--lime) 0 4px, transparent 5px);
-  transform: rotate(-18deg);
-}
-
-body::after {
-  width: 300px;
-  height: 250px;
-  right: -100px;
-  top: 420px;
-  background:
-    radial-gradient(circle at 20% 30%, var(--blue) 0 8px, transparent 9px),
-    radial-gradient(circle at 65% 45%, var(--pink) 0 5px, transparent 6px),
-    radial-gradient(circle at 45% 80%, var(--lime) 0 11px, transparent 12px),
-    radial-gradient(circle at 85% 75%, var(--orange) 0 4px, transparent 5px);
-  transform: rotate(22deg);
-}
-
-.hero h1,
-.section-heading h2,
-.about h2 {
-  text-shadow:
-    3px 3px 0 rgba(255, 79, 195, 0.18),
-    -2px 2px 0 rgba(53, 201, 255, 0.12);
-}
-
-.work-card,
-.skill,
-.about {
-  position: relative;
-}
-
-.work-card::before,
-.skill::before {
-  content: "✳";
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  color: var(--orange);
-  font-size: 1rem;
-  transform: rotate(15deg);
-}
-
-.work-card:nth-child(2)::before {
-  color: var(--lime);
-  content: "✦";
-}
-
-.work-card:nth-child(3)::before {
-  color: var(--blue);
-  content: "✳";
-}
-
-.work-card:nth-child(4)::before {
-  color: var(--pink);
-  content: "✦";
-}
-
-.button {
-  border-radius: 5px 14px 7px 12px;
-  transform: rotate(-1deg);
-}
-
-.button.secondary {
-  transform: rotate(1deg);
-}
-
-.about-art {
-  border-radius: 12px 28px 18px 35px;
-  transform: rotate(-2deg);
-}
   </style>
 </head>
 
 <body>
-  <div class="site-wrapper">
+  <div class="page">
 
-    <header class="site-header">
-      <a href="index.html" class="logo">aliceinw<span>♡</span></a>
+    <header>
+      <a href="index.html" class="logo">aliceinw</a>
 
-      <nav class="main-nav">
+      <nav>
         <a href="index.html" class="active">Home</a>
         <a href="ctf.html">CTF</a>
         <a href="notes.html">Notlar</a>
         <a href="archive.html">Arşiv</a>
         <a href="about.html">About</a>
+        <a href="#" class="search">⌕</a>
       </nav>
     </header>
 
     <main>
-
       <section class="hero">
-        <div class="hero-text">
-          <p class="hero-kicker">Hey,</p>
+        <div class="hero-copy">
+          <div class="hello">Hey,</div>
 
           <h1>
             I'm
@@ -670,164 +567,153 @@ body::after {
             Offensive Security Researcher
           </p>
 
-          <p class="hero-description">
-            Exploring web security, breaking things ethically,
-            and collecting everything I learn along the way.
-          </p>
-
-          <div class="hero-actions">
-            <a
-              href="https://www.linkedin.com/in/rezzan-mustuk/"
-              class="button"
-              target="_blank"
-              rel="noopener"
-            >
-              LinkedIn →
-            </a>
-
-            <a href="#recent-work" class="button secondary">
-              View Projects ↗
-            </a>
-          </div>
+          <a class="button" href="https://www.linkedin.com/in/rezzan-mustuk/" target="_blank">
+            LinkedIn <span>→</span>
+          </a>
         </div>
 
         <div class="hero-art">
-          <div class="portrait-placeholder">
-            <div>
-              <strong>Portrait illustration</strong>
-              <p>
-                Your custom illustration will go here.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="recent-work">
-        <div class="section-heading">
-          <h2>Recent <span>Work</span></h2>
-          <a href="archive.html" class="view-all">View All →</a>
-        </div>
-
-        <div class="work-grid">
-
-          <article class="work-card">
-            <div class="work-image">Web Security</div>
-            <div class="work-content">
-              <h3>TryHackMe — Web Application Security Fundamentals</h3>
-              <p>CTF Write-up · Sep 13, 2026</p>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <div class="work-image">Nmap</div>
-            <div class="work-content">
-              <h3>Understanding Nmap Scans</h3>
-              <p>Technical Note · Sep 12, 2026</p>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <div class="work-image">Linux</div>
-            <div class="work-content">
-              <h3>Linux Privilege Escalation Notes</h3>
-              <p>Technical Note · Sep 10, 2026</p>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <div class="work-image">Active Directory</div>
-            <div class="work-content">
-              <h3>Active Directory Enumeration Guide</h3>
-              <p>Technical Note · Sep 08, 2026</p>
-            </div>
-          </article>
-
+          <div class="character"></div>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-heading">
-          <h2><span>Skills</span></h2>
-        </div>
-
-        <div class="skills">
-          <div class="skill">
-            <div class="skill-icon">⌘</div>
-            <p>Web Security</p>
+        <div class="section-panel">
+          <div class="section-heading">
+            <h2>Recent Work</h2>
+            <a href="archive.html" class="view-all">View All →</a>
           </div>
 
-          <div class="skill">
-            <div class="skill-icon">›_</div>
-            <p>Linux</p>
-          </div>
+          <div class="work-grid">
+            <article class="work-card">
+              <div class="work-image web">Web Security</div>
+              <div class="work-content">
+                <h3>TryHackMe — Web Application Security Fundamentals</h3>
+                <p class="date">Sep 13, 2026</p>
+                <div class="tags">
+                  <span class="tag">#thm</span>
+                  <span class="tag">#web</span>
+                  <span class="tag">#security</span>
+                </div>
+              </div>
+            </article>
 
-          <div class="skill">
-            <div class="skill-icon">⌘</div>
-            <p>Networking</p>
-          </div>
+            <article class="work-card">
+              <div class="work-image nmap">Nmap 10.0.0.1<br>22/tcp open ssh</div>
+              <div class="work-content">
+                <h3>Understanding Nmap Scans</h3>
+                <p class="date">Sep 12, 2026</p>
+                <div class="tags">
+                  <span class="tag">#nmap</span>
+                  <span class="tag">#networking</span>
+                </div>
+              </div>
+            </article>
 
-          <div class="skill">
-            <div class="skill-icon">ϟ</div>
-            <p>Burp Suite</p>
-          </div>
+            <article class="work-card">
+              <div class="work-image linux">Linux<br>Privilege Escalation</div>
+              <div class="work-content">
+                <h3>Linux Privilege Escalation Notes</h3>
+                <p class="date">Sep 10, 2026</p>
+                <div class="tags">
+                  <span class="tag">#linux</span>
+                  <span class="tag">#privesc</span>
+                </div>
+              </div>
+            </article>
 
-          <div class="skill">
-            <div class="skill-icon">◎</div>
-            <p>Nmap</p>
-          </div>
-
-          <div class="skill">
-            <div class="skill-icon">▦</div>
-            <p>Active Directory</p>
+            <article class="work-card">
+              <div class="work-image ad">Active Directory</div>
+              <div class="work-content">
+                <h3>Active Directory Enumeration Guide</h3>
+                <p class="date">Sep 08, 2026</p>
+                <div class="tags">
+                  <span class="tag">#ad</span>
+                  <span class="tag">#enumeration</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="about">
+        <div class="section-panel">
+          <div class="section-heading">
+            <h2>Skills</h2>
+          </div>
+
+          <div class="skills">
+            <div class="skill">
+              <div class="skill-icon">◎</div>
+              <p>Web Security</p>
+            </div>
+
+            <div class="skill">
+              <div class="skill-icon">›_</div>
+              <p>Linux</p>
+            </div>
+
+            <div class="skill">
+              <div class="skill-icon">⌘</div>
+              <p>Networking</p>
+            </div>
+
+            <div class="skill">
+              <div class="skill-icon">ϟ</div>
+              <p>Burp Suite</p>
+            </div>
+
+            <div class="skill">
+              <div class="skill-icon">◎</div>
+              <p>Nmap</p>
+            </div>
+
+            <div class="skill">
+              <div class="skill-icon">▦</div>
+              <p>Active Directory</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-panel about">
           <div class="about-art">
-            Your friendly<br>
-            security researcher<br>
-            illustration
+            Rezzan<br>
+            Offensive<br>
+            Security
           </div>
 
           <div>
-            <h2>About <span>Me</span></h2>
+            <h2>About Me</h2>
 
             <p>
               I'm Rezzan, an Offensive Security Researcher who enjoys
-              learning, exploring how systems work, and sharing the
-              things I discover through CTF write-ups and technical notes.
+              learning, breaking things ethically, and exploring how
+              systems work. This is where I share my CTF write-ups,
+              technical notes and more.
             </p>
 
-            <a href="about.html" class="button">
-              Know More About Me →
+            <a class="button" href="about.html">
+              Know More About Me <span>→</span>
             </a>
           </div>
         </div>
       </section>
-
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-logo">aliceinw ♡</div>
+    <footer>
+      <div class="footer-logo">aliceinw ♕</div>
 
       <div class="footer-links">
-        <a href="https://github.com/rezzanmustuk" target="_blank" rel="noopener">
-          GitHub
-        </a>
-
-        <a href="https://www.linkedin.com/in/rezzan-mustuk/" target="_blank" rel="noopener">
-          LinkedIn
-        </a>
-
-        <a href="https://tryhackme.com/p/aliceinnvw" target="_blank" rel="noopener">
-          TryHackMe
-        </a>
+        <a href="https://github.com/rezzanmustuk" target="_blank">◉</a>
+        <a href="https://www.linkedin.com/in/rezzan-mustuk/" target="_blank">in</a>
+        <a href="https://tryhackme.com/p/aliceinnvw" target="_blank">☁</a>
+        <a href="mailto:yourmail@example.com">✉</a>
       </div>
 
-      <p>impossibleismyspecialty</p>
+      <p class="footer-note">impossibleismyspecialty</p>
     </footer>
 
   </div>
